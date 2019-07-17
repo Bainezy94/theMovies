@@ -1,0 +1,11 @@
+<% add_breadcrumb 'Genres', genres_path %>
+<% add_breadcrumb @genre.genre, genre_path(@genre) %>
+<% add_breadcrumb 'Edit', edit_genre_path(@genre) %>
+
+<div class="container">
+
+    <h1>Editing Genre</h1>
+
+    <%= render 'form', genre: @genre %>
+
+</div>

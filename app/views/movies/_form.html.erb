@@ -1,0 +1,46 @@
+<div class="row">
+    <%= simple_form_for @movie, :html => {class: "col s12"} do |f| %>
+
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        
+        <%= f.input       :name,           wrapper_html: { class: "input-field col s12" }, required: true %>
+        <%= f.input       :release_date,   wrapper_html: { class: "input-field col s6"  }, required: true, input_html: { class: "datepicker no-autoinit" }, as: :string %>
+        <%= f.association :classification, wrapper_html: { class: "input-field col s6"  }, required: true, label_method: :classification %>
+        <%= f.input       :duration,       wrapper_html: { class: "input-field col s6"  }, required: true %>
+        <%= f.input       :director,       wrapper_html: { class: "input-field col s6"  } %> 
+        <%= f.input       :trailer,        wrapper_html: { class: "input-field col s6"  }, label: "Trailer (YouTube ID)" %>
+        <%= f.association :genres,         wrapper_html: { class: "input-field col s6"  }, label_method: :genre %>
+        <%= f.input       :synopsis,       wrapper_html: { class: "input-field col s12" }, input_html: { class: "materialize-textarea" } %>
+        
+        <% if @movie.artwork.attached? %>
+
+            <div class="artwork z-depth-3">
+                <%= image_tag(@movie.artwork) %>
+                <%= link_to 'remove_circle_outline', artwork_delete_path(@movie.id), method: :delete, data: { confirm: "Are you sure you would like to delete this artwork?" }, class: "waves-effect waves-light btn material-icons" %> 
+            </div>
+
+        <% else %>
+
+            <div class="file-field input-field col s6">
+                <div class="btn">
+                    <span>Poster</span>
+                    <%= f.input :artwork, label: false %>
+                </div>
+                    <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            
+        <% end %>
+
+        <div class="col s12">
+            <%= f.button  :submit %>
+
+            <% if @movie.id.present? %>
+                <%= link_to 'Delete Movie', @movie, method: :delete, data: { confirm: "Are you sure you would like to delete this movie?" }, class: "waves-effect waves-light btn" %> 
+            <% end %>
+        </div>
+    <% end %>
+
+</div>

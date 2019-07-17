@@ -1,0 +1,14 @@
+<div class="row">
+    <%= simple_form_for @seat, :html => {class: "col s12"} do |f| %>
+
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        
+        <%= f.input       :seat,     wrapper_html: { class: "input-field col s12" }, required: true %>
+        <%= f.association :showtime, wrapper_html: { class: "input-field col s6"  }, required: true, label_method: :movie %>
+        <%= f.association :user,     wrapper_html: { class: "input-field col s6"  }, required: true, label_method: :email %>
+
+        <%= f.button      :submit %>
+    <% end %>
+
+</div>

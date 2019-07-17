@@ -1,0 +1,11 @@
+<% add_breadcrumb 'Cinemas', cinemas_path %>
+<% add_breadcrumb @cinema.cinema, cinema_path(@cinema) %>
+<% add_breadcrumb 'Edit', edit_cinema_path(@cinema) %>
+
+<div class="container">
+
+    <h1>Editing Cinema</h1>
+
+    <%= render 'form', cinema: @cinema %>
+    
+</div>

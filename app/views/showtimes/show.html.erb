@@ -1,0 +1,18 @@
+<% add_breadcrumb 'Showtimes', showtimes_path %>
+<% add_breadcrumb @showtime.movie["name"], showtime_path(@showtime) %>
+
+<div class="container">
+
+    <section class="details">
+
+        <h1 class="name"><%= @showtime.movie["name"] %></h1>
+
+        <br>
+
+        <div class="date">Date: <%= @showtime.date %></div>
+
+        <%= link_to 'Edit', edit_showtime_path(@showtime), class: "waves-effect waves-light btn-small" if can? :update, Showtime %> 
+
+    </section>
+
+</div>

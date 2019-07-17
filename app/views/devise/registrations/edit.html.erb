@@ -1,0 +1,22 @@
+<% add_breadcrumb 'Update Profile', edit_user_registration_path %>
+
+<div class="container">
+    <h2>Update Profile</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        
+        <%= f.input :email, required: true, autofocus: true %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+        <%= f.input :password,              input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation, input_html: { autocomplete: "new-password" } %>
+        <%= f.input :current_password,      input_html: { autocomplete: "current-password" }, required: true %>
+
+        <%= f.button :submit, "Update Profile" %>
+    <% end %>
+
+    <p><%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+</div>

@@ -1,0 +1,16 @@
+<% add_breadcrumb 'Cinemas', cinemas_path %>
+<% add_breadcrumb @cinema.cinema, cinema_path(@cinema) %>
+
+<div class="container">
+    <p>
+        <strong>Cinema:</strong>
+        <%= @cinema.cinema %>
+    </p>
+
+    <p>
+        <strong>class:</strong>
+        <%= @cinema.cinema_type %>
+    </p>
+
+    <%= link_to 'Edit', edit_cinema_path(@cinema) %>
+</div>

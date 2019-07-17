@@ -1,0 +1,27 @@
+<% add_breadcrumb 'Seats', seats_path %>
+
+<h1>Seats</h1>
+
+<a class="waves-effect waves-light btn-small" href="seats/new">New Seat</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Seat</th>
+            <th>Showtimes</th>
+            <th>User</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @seats.each do |seat| %>
+            <tr onClick="goTo('<%= seat_path(seat) %>')">
+                <td><%= seat.seat %></td>
+                <td><%= seat.showtimes %></td>
+                <td><%= seat.user %></td>
+                <td><%= link_to 'Delete', seat, method: :delete, class: "waves-effect waves-light btn",  data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

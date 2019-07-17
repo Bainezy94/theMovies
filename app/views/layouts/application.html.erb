@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>TheMovies</title>
+        <meta name="turbolinks-visit-control" content="reload">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    </head>
+
+    <body>
+        <%= render 'partials/navbar'%>
+
+        <%= render_navigation %>
+                
+        <% if notice %>
+            <script>M.toast({html: '<%= notice %>'})</script>
+        <% end %>
+
+        <% if alert %>
+            <script>M.toast({html: '<%= alert %>'})</script>
+        <% end %>
+
+        <%= yield %>
+
+        <%= render 'partials/footer'%>
+
+    </body>
+</html>

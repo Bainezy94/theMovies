@@ -1,0 +1,12 @@
+<div class="row">
+    <%= simple_form_for @cinema, :html => {class: "col s12"} do |f| %>
+
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        
+        <%= f.input       :cinema,         wrapper_html: { class: "input-field col s6" }, required: true %>
+        <%= f.input       :cinema_type,    wrapper_html: { class: "input-field col s6"  }, required: true %>
+
+        <%= f.button      :submit %>
+    <% end %>
+</div>

@@ -1,0 +1,25 @@
+<% add_breadcrumb 'Cinemas', cinemas_path %>
+
+<h1>Cinemas</h1>
+
+<a class="waves-effect waves-light btn-small" href="cinemas/new">New Cinema</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cinema</th>
+            <th>Cinema Type</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @cinemas.each do |cinema| %>
+            <tr onClick="goTo('<%= cinema_path(cinema) %>')">
+                <td><%= cinema.cinema %></td>
+                <td><%= cinema.cinema_type %></td>
+                <td><%= link_to 'Delete', cinema, method: :delete, class: "waves-effect waves-light btn",  data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

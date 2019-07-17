@@ -1,0 +1,11 @@
+<% add_breadcrumb 'Showtimes', showtimes_path %>
+<% add_breadcrumb @showtime.movie["name"], showtime_path(@showtime) %>
+<% add_breadcrumb 'Edit', edit_showtime_path(@showtime) %>
+
+<div class="container">
+
+    <h1>Editing Showtime</h1>
+
+    <%= render 'form', showtime: @showtime %>
+
+</div>

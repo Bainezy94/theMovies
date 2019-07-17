@@ -1,0 +1,23 @@
+<% add_breadcrumb 'Genres', genres_path %>
+
+<h1>Genres</h1>
+
+<a class="waves-effect waves-light btn-small" href="genres/new">New Genre</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Genre</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @genres.each do |genre| %>
+            <tr onClick="goTo('<%= genre_path(genre) %>')">
+                <td><%= genre.genre %></td>
+                <td><%= link_to 'Delete', genre, method: :delete, class: "waves-effect waves-light btn",  data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

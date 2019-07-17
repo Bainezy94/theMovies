@@ -1,0 +1,65 @@
+// Place all the styles related to the Showtimes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.showtime_list_item {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 0;
+    overflow: hidden;
+
+    .details {
+        flex-grow: 1;
+    }
+
+    &:nth-child(even) {
+        background-color: #f3f3f3;
+    }
+
+    .time {
+        margin-right: 40px;
+        border: solid 2px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .name {
+        font-size: 32px;
+    }
+}
+
+.showtime_item {
+
+    display: flex;
+    padding: 10px 20px;
+
+    .artwork_container {
+        width: 190px;
+        margin: 50px 30px 0 0;
+    }
+
+    .artwork {
+        width: 190px;
+        height: 283px;
+    }
+
+    .trailer {
+        width: 100%;
+    }
+
+    .details {
+
+        h1 {
+            margin-left: 0;
+        }
+        
+        .classification, .release_date, .director, .genres, .duration {
+            color: gray;
+        }
+    }
+
+}

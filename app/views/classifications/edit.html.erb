@@ -1,0 +1,11 @@
+<% add_breadcrumb 'Classifications', classification_path %>
+<% add_breadcrumb @classification.classification, classification_path(@classification) %>
+<% add_breadcrumb 'Edit', edit_classification_path(@classification) %>
+
+<div class="container">
+
+    <h1>Editing Classification</h1>
+
+    <%= render 'form', classification: @classification %>
+
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+    <%= simple_form_for @showtime, :html => {class: "col s12"} do |f| %>
+
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+        
+        <%= f.association :movie,  wrapper_html: { class: "input-field col s12" }, required: true %>
+        <%= f.input       :date,   wrapper_html: { class: "input-field col s6"  }, required: true, input_html: { class: "datepicker no-autoinit" }, as: :string %>
+        <%= f.input       :date,   wrapper_html: { class: "input-field col s6"  }, class: "col s2" , required: true, as: :time %>
+
+        <%= f.association :cinema, wrapper_html: { class: "input-field col s6"  }, required: true, label_method: :cinema %>
+        
+        <div class="col s12">
+            <%= f.button      :submit %>
+        </div>
+    <% end %>
+
+</div>

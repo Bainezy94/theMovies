@@ -1,0 +1,34 @@
+<% add_breadcrumb 'Movies', movies_path %>
+
+<h1>Movies</h1>
+<%= link_to 'New Movie', new_movie_path, class: "waves-effect waves-light btn-small" if can? :create, Movie %> 
+
+<% @movies.each do |movie| %>
+    <div class="list_item">
+
+        <a href="<%= movie_path(movie) %>">
+            <div class="artwork z-depth-3">
+                <% if movie.artwork.attached? %>
+                    <%= image_tag(movie.artwork) %>
+                <% else %>
+                    <i class="material-icons">image_search</i>
+                    <span>Could not locate movie poster</span>
+                <% end %>
+            </div>
+        </a>
+
+        <section class="details">
+            <a href="<%= movie_path(movie) %>">
+                <span class="name"><%= movie.name %></span>
+            </a>
+            <% if movie.duration.present? %>
+                <span class="duration">(<%= movie.duration %> min)</span>
+            <% end %>
+            <span class="classification"> <%= movie.classification["classification"] %></span>
+
+            <p class="synopsis"><%= movie.synopsis %></p>
+        </section>
+        
+        <%= link_to 'More Info', movie_path(movie), class: "waves-effect waves-light btn-large view" %> 
+    </div>
+<% end %>

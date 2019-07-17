@@ -1,0 +1,21 @@
+<% add_breadcrumb 'Seats', seats_path %>
+<% add_breadcrumb @seat.seat, seat_path(@seat) %>
+
+<div class="container">
+    <p>
+        <strong>Seat:</strong>
+        <%= @seat.seat %>
+    </p>
+
+    <p>
+        <strong>Showtimes:</strong>
+        <%= @seat.showtimes %>
+    </p>
+
+    <p>
+        <strong>User:</strong>
+        <%= @seat.user %>
+    </p>
+
+    <%= link_to 'Edit', edit_seat_path(@seat) %>
+</div>

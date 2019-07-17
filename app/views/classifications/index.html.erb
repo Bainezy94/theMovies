@@ -1,0 +1,25 @@
+<% add_breadcrumb 'Classifications', classifications_path %>
+
+<h1>Classifications</h1>
+
+<a class="waves-effect waves-light btn-small" href="classifications/new">New Classification</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Classification</th>
+            <th>Description</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @classifications.each do |classification| %>
+            <tr onClick="goTo('<%= classification_path(classification) %>')">
+                <td><%= classification.classification %></td>
+                <td><%= classification.description %></td>
+                <td><%= link_to 'Delete', classification, method: :delete, class: "waves-effect waves-light btn",  data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

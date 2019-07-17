@@ -1,0 +1,49 @@
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper blue darken-3">
+            <a href="/movies" class="brand-logo">The Movies</a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                <% if can? :create, Movie %>
+                    <li><a href="/cinemas">Cinemas</a></li>
+                    <li><a href="/classifications">Classifications</a></li>
+                    <li><a href="/genres">Genres</a></li>
+                    <li><a href="/seats">Seats</a></li>
+                <% end %>
+
+                <li><a href="/movies"><i class="material-icons left">movie_filter</i>Movies</a></li>
+                <li><a href="/showtimes"><i class="material-icons left">access_time</i>Showtimes</a></li>
+                <% if user_signed_in? %>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                <% else %>
+                    <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
+                    <li><%= link_to "Register", new_user_registration_path, :class => 'navbar-link' %></li>
+                <% end %>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<%# Nav DropDown %>
+<ul id="dropdown1" class="dropdown-content">
+    <% if user_signed_in? %>
+        <li><%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+    <% end %>
+</ul>
+
+
+<%# Mobile Nav Bar %>
+<ul class="sidenav" id="slide-out">
+    <li><a href="/movies">Movies</a></li>
+    <li><a href="/showtimes">Showtimes</a></li>
+    <% if user_signed_in? %>
+        <li><%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+    <% else %>
+        <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>
+        <li><%= link_to "Register", new_user_registration_path, :class => 'navbar-link' %></li>
+    <% end %>
+</ul>

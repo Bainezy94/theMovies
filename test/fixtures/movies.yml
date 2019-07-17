@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  release_date: 2019-07-02
+  director: MyString
+  synopsis: MyText
+  classification: one
+  artwork: MyString
+  trailer: MyString
+  duration: 1
+
+two:
+  name: MyString
+  release_date: 2019-07-02
+  director: MyString
+  synopsis: MyText
+  classification: two
+  artwork: MyString
+  trailer: MyString
+  duration: 1

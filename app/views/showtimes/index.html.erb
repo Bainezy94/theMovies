@@ -1,0 +1,23 @@
+<% add_breadcrumb 'Showtimes', showtimes_path %>
+
+<h1>Showtimes</h1>
+
+<%= link_to 'New Showtime', new_showtime_path, class: "waves-effect waves-light btn-small" if can? :create, Showtime %> 
+
+<% @showtimes.each do |showtime| %>
+
+    <div class="showtime_list_item">
+
+        <div class="details">
+            <a href="<%= showtime_path(showtime) %>">
+                <span class="time"><%= showtime.date.strftime("%I:%M %p") %></span>
+            </a>
+
+            <a href="<%= showtime_path(showtime) %>">
+                <span class="name"><%= showtime.movie["name"] %></span>
+            </a>
+        </div>
+
+        <%= link_to 'Buy Tickets', showtime_path(showtime), class: "waves-effect waves-light btn view" %> 
+    </div>
+<% end %>

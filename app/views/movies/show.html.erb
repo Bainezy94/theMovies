@@ -1,0 +1,65 @@
+<% add_breadcrumb 'Movies', movies_path %>
+<% add_breadcrumb @movie.name, movie_path(@movie) %>
+
+<div class="container item">
+
+    <div class="artwork_container">
+
+        <div class="artwork z-depth-3">
+            <% if @movie.artwork.attached? %>
+                <%= image_tag(@movie.artwork) %>
+            <% else %>
+                <i class="material-icons">image_search</i>
+                <span>Could not locate movie poster</span>
+            <% end %>
+        </div>
+
+        <% if @movie.trailer.present? %>
+            <a class="waves-effect waves-light btn-small modal-trigger trailer modal-trigger" href="#modal_trailer">Watch Trailer</a>
+        <% end %>
+
+        <div id="modal_trailer" class="modal">
+
+            <div class="modal-content">
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<%= @movie.trailer %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <section class="details">
+
+        <h1 class="name"><%= @movie.name %></h1>
+
+        <div class="synopsis"><%= @movie.synopsis %></div>
+
+        <br>
+
+        <div class="classification">Classification: <%= @movie.classification["classification"] %></div>
+
+        <div class="release_date">Release Date: <%= @movie.release_date %></div>
+
+        <div class="director">Director: <%= @movie.director %></div>
+
+        <% if @genres.present? %>
+            <div class="genres">Genres: <%= @genres %></div>
+        <% end %>
+
+        <% if @movie.duration.present? %>
+            <div class="duration">Duration: <%= @movie.duration %> min</div>
+        <% end %>
+
+        <br>
+
+        <%= link_to 'Edit', edit_movie_path(@movie), class: "waves-effect waves-light btn-small" if can? :update, Movie %> 
+
+    </section>
+
+    <section class="showtimes">
+
+    </section>
+
+</div>
